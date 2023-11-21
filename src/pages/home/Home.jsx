@@ -1,13 +1,13 @@
 import EventGroup from "../../assets/Event-Group.jsx";
 import {useEffect, useState} from "react";
-import axios from "axios";
 import {baseUrl} from "../../App.jsx";
+import axiosApiInstance from "../../utils/AxiosApiInstance.js";
 
 export default function Home() {
 
     return (
         <>
-            <Header />
+            <Header/>
             <EventGroup/>
             <EventGroup/>
         </>
@@ -23,7 +23,7 @@ function Header() {
     useEffect(() => {
         const fetchEventCategories = async () => {
             try {
-                const response = await axios.get(url);
+                const response = await axiosApiInstance.get(url);
                 if (response.status === 200) {
                     setEventCategories(response.data.data);
                 } else {
@@ -35,40 +35,47 @@ function Header() {
         };
         fetchEventCategories().finally();
 
-    },[]);
+    }, []);
 
-    return(
-        <div className="bg-gray-100 flex flex-col border border-none rounded-2xl gap-2.5 p-2.5 mb-6  py-5 md:py-20 text-center">
-            <div className="flex justify-center text-2xl font-bold">Search for events</div>
-            <div className="flex justify-center text-base">Explore top-rated attractions, activities and more!</div>
-            <div className="flex justify-center flex-wrap text-base gap-1">
-                <div className="w-full sm:w-1/2">
-                    <input type="search" placeholder="What are you looking for ?" className="flex py-4 px-6 border rounded-xl bg-white w-full" />
+    return (
+        <div className="border relative flex flex-col overflow-hidden border-none rounded-2xl h-[600px]  md:h-96 mb-8">
+            <img src={'src/assets/images/home.jpg'} className={'object-cover absolute w-full h-full '}/>
+            <div
+                className={'absolute w-full min-h-full flex flex-col justify-center gap-4 p-8 text-white bg-black/30 text-center'}>
+                <div className="flex justify-center text-2xl md:text-5xl font-bold">Search for events</div>
+                <div className="flex justify-center text-2xl">Explore top-rated attractions, activities and more!</div>
+                <div className="flex justify-center flex-wrap text-base gap-1 text-gray-800">
+                    <div className="w-full sm:w-1/2">
+                        <input type="search" placeholder="What are you looking for ?"
+                               className="input input-bordered w-full"/>
+                    </div>
+                    <select className="select select-bordered w-full md:w-fit"
+                            value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}
+                    >
+                        {eventCategories.map((category) => (
+                            <option key={category.id} value={category.id}>
+                                {category.name}</option>
+                        ))}
+                        <option value={""}>All categories</option>
+                    </select>
+
+                    <button className="btn btn-primary text-white w-full md:w-fit">Search</button>
+
                 </div>
-                <select className="bg-gray-300 flex py-2 my-2 sm:py-4 px-0 sm:px-6 border"
-                        value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                >
-                    {eventCategories.map((category) => (
-                        <option key={category.id} value={category.id}>
-                            {category.name}</option>
-                    ))}
-                    <option value={""}>All categories</option>
-                </select>
-                <div>
-                    <button className="flex py-4 px-6 border bg-gray-300 rounded-md">Search</button>
-                </div>
-            </div>
-            <div className="flex justify-center text-base">or browse event by feature</div>
-            <div className="flex flex-wrap justify-center text-base gap-4">
-                <div>
-                    <button type="button" className="flex py-2 px-4 border bg-gray-300 rounded-3xl">Upcoming events</button>
-                </div>
-                <div>
-                    <button className="flex py-2 px-4 border bg-gray-300 rounded-3xl">Featured events</button>
-                </div>
-                <div>
-                    <button className="flex py-2 px-4 border bg-gray-300 rounded-3xl">All events</button>
+                <div className="flex justify-center text-base">or browse event by feature</div>
+                <div className="flex flex-wrap justify-center text-base gap-4">
+
+                    <button type="button"
+                            className="flex py-2 px-4 bg-gray-400/70 backdrop-blur-md rounded-full">Upcoming
+                        events
+                    </button>
+
+                    <button className="flex py-2 px-4 bg-gray-400/70 backdrop-blur-md rounded-full">Featured events
+                    </button>
+
+                    <button className="flex py-2 px-4 bg-gray-400/70 backdrop-blur-md rounded-full">All events</button>
+
                 </div>
             </div>
         </div>

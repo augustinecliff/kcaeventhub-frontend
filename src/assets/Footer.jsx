@@ -19,9 +19,9 @@ export function Footer() {
                     <div className="flex justify-center text-2xl font-bold">Ready to elevate your event experience?</div>
                     <div className="flex justify-center text-base">Streamline ticketing, boost sales, and get dedicated support</div>
                     <div className="flex justify-center flex-wrap text-base gap-1">
-                        <div>
-                            <Button name={"Join Now!"}/>
-                        </div>
+                        <button className={'btn btn-primary text-white px-10'}
+                                onClick={() => document.getElementById('login_modal').showModal()}>Join Now
+                        </button>
                     </div>
                     <div className="flex justify-center text-base">or browse event by feature</div>
                 </div>
