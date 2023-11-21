@@ -1,58 +1,23 @@
 import Event from "./Event.jsx";
+import {useEffect} from "react";
 
-export default function EventGroup() {
-    const events = [];
-    for (let i = 0;i < 8;i ++) {
-        events.push(i);
-    }
+export default function EventGroup( {events} ) {
 
-    console.log(events);
-
+    useEffect(() => {
+        console.log(events);
+    },[events]);
     return (
         <>
-            {/*<div className="event-group-outer border bg-red-400 w-full">*/}
-            {/*    <div className="event-group-outer-heading">*/}
-            {/*        <div style={*/}
-            {/*            {*/}
-            {/*                color: "black",*/}
-            {/*                fontSize: "24px",*/}
-            {/*                fontFamily: "Inter, serif",*/}
-            {/*                fontWeight: "600",*/}
-            {/*                wordWrap: "break-word"*/}
-            {/*            }*/}
-            {/*        }>Popular events</div>*/}
-            {/*        <div style={*/}
-            {/*            {*/}
-            {/*                color: "white",*/}
-            {/*                fontSize: "16px",*/}
-            {/*                fontFamily: "Inter, serif",*/}
-            {/*                fontWeight: "400",*/}
-            {/*                wordWrap: "break-word"*/}
-            {/*            }*/}
-            {/*        }><a href="" className="link">See more...</a></div>*/}
-            {/*    </div>*/}
-            {/*    /!*<div className="event-group-inner">*!/*/}
-            {/*    /!*    {events.map((events) => <Event key={events}/>)}*!/*/}
-            {/*    /!*</div>*!/*/}
-
-            {/*    <div className="">*/}
-            {/*        {events.map((events) => <Event key={events}/>)}*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-
-
-            <div className="flex justify-center w-screen">
-                <div className="border w-full md:w-8/12">
-                    <div className="flex justify-between ">
+            <div className="flex justify-center w-full mb-6">
+                <div className="border border-none w-full bg-gray-100 rounded-2xl py-6">
+                    <div className="flex justify-between px-6">
                         <div className="text-2xl font-bold mb-4">Popular events</div>
                         <div><a href="" className="link">See more...</a></div>
                     </div>
-                    {/*<div className="event-group-inner">*/}
-                    {/*    {events.map((events) => <Event key={events}/>)}*/}
-                    {/*</div>*/}
-
-                    <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-                        {events.map((events) => <Event key={events}/>)}
+                    <div className="p-6 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        {/*{events.map(
+                            event => <Event key={event.eventId}  event={event}/>
+                        )}*/}
                     </div>
                 </div>
             </div>
