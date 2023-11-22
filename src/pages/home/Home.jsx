@@ -67,12 +67,12 @@ function Header() {
                 className={'absolute w-full min-h-full flex flex-col justify-center gap-4 p-8 text-white bg-black/30 text-center'}>
                 <div className="flex justify-center text-2xl md:text-5xl font-bold">Search for events</div>
                 <div className="flex justify-center text-2xl">Explore top-rated attractions, activities and more!</div>
-                <div className="flex justify-center flex-wrap text-base gap-1 text-gray-800">
-                    <div className="w-full sm:w-1/2">
+                <div className="flex justify-center flex-wrap lg:flex-nowrap text-base gap-1 text-gray-800">
+                    <div className="w-full">
                         <input type="search" placeholder="What are you looking for ?"
                                className="input input-bordered w-full"/>
                     </div>
-                    <select className="select select-bordered w-full md:w-fit"
+                    <select className="select select-bordered w-full lg:w-fit"
                             value={selectedCategory}
                             onChange={(e) => setSelectedCategory(e.target.value)}
                     >
@@ -83,7 +83,7 @@ function Header() {
                         <option value={""}>All categories</option>
                     </select>
 
-                    <button className="btn btn-primary text-white w-full md:w-fit">Search</button>
+                    <button className="btn btn-primary text-white w-full lg:w-fit">Search</button>
 
                 </div>
                 <div className="flex justify-center text-base">or browse event by feature</div>

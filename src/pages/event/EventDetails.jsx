@@ -77,10 +77,10 @@ export default function EventDetails({route}) {
                             <div className="h-14 w-14 sm:h-20 sm:w-20 bg-white rounded-full">
                             </div>
                             <div className="flex flex-col sm:gap-1 justify-center">
-                                <div className="flex font-bold">Amapiano Nairobi</div>
+                                <div className="flex font-bold">{event?.organizer?.firstName +' ' + event?.organizer?.lastName}</div>
                                 <div className="flex flex-col sm:flex-row flex-wrap sm:gap-6">
-                                    <div className="">amapiano@gmail.com</div>
-                                    <div>254700000000</div>
+                                    <div className="">{event?.organizer?.email}</div>
+                                    <div>{event?.organizer?.phone}</div>
                                 </div>
                             </div>
                         </div>

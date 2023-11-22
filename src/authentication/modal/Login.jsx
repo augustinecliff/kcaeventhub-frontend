@@ -66,7 +66,7 @@ export function LoginModal() {
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" type={'submit'}></button>
                 </form>
-                <img src={'src/assets/images/auth-header.jpg'} className={'object-cover h-14 md:h-20 w-full rounded-lg mb-4 rounded-tr-3xl'} alt={'Cover'}/>
+                <img src={'./src/assets/images/auth-header.jpg'} className={'object-cover h-14 md:h-20 w-full rounded-lg mb-4 rounded-tr-3xl'} alt={'Cover'}/>
 
                 <div className={'text-left'}>
                     <h3 className={'text-2xl font-semibold mb-4'}>Login to KCA Event Hub</h3>
