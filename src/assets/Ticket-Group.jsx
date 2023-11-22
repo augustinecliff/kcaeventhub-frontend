@@ -1,11 +1,11 @@
 import Ticket from "./Ticket.jsx";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
-export default function TicketGroup( {tickets} ) {
+export default function TicketGroup({tickets}) {
     useEffect(() => {
 
-    },[tickets]);
-    return(
+    }, [tickets]);
+    return (
         <>
             <div className="flex justify-center w-full mb-6">
                 <div className="border border-none w-full bg-gray-100 rounded-2xl py-6">
@@ -16,7 +16,16 @@ export default function TicketGroup( {tickets} ) {
                         </div>
                     </div>
                     <div className="p-6 w-full grid grid-cols-1  gap-4">
-                        {tickets.map((ticket) => <Ticket key={ticket}/>)}
+                        {
+                            tickets?.length ? (
+                                tickets?.map((ticket) => <Ticket key={ticket}/>)
+                            ) : (
+                                <div className={'bg-orange-100 rounded-2xl p-10'}>
+                                    <p>Your Event tickets will be shown here</p>
+                                </div>
+                            )
+
+                        }
                     </div>
                 </div>
             </div>

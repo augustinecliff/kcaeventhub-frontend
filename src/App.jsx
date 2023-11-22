@@ -20,7 +20,7 @@ function App() {
                     <Routes>
                         <Route index={true} path="/" element={<Home/>}></Route>
                         <Route path="/event_search" element={<Home/>}></Route> {/*EventSearch*/}
-                        <Route path="/event_details" element={<EventDetails/>}></Route>
+                        <Route path="/event_details/:eventId" element={<EventDetails/>}></Route>
                         <Route path="/event_host" element={<EventHostPage/>}></Route>
                         <Route path="/create_event" element={<CreateEvent/>}></Route>
                         <Route path="/my_tickets" element={<MyTickets/>}></Route>

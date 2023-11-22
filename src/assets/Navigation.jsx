@@ -64,7 +64,7 @@ export function Navigation() {
                                         {loggedInUser().email.slice(0, 1)}
                                     </div>
                                     <ul className="text-left menu bg-base-200 rounded-box w-44 absolute right-0 hidden group-hover:block z-10">
-                                        <li><a>Welcome {loggedInUser().firstName}</a></li>
+                                        <li><a>Welcome <span className={'font-bold'}>{loggedInUser().firstName}</span></a></li>
                                         <li onClick={() => logoutUser()}><a>Logout</a></li>
                                     </ul>
                                 </div>

@@ -4,10 +4,19 @@ import axiosApiInstance from "../../utils/AxiosApiInstance.js";
 export function LoginModal() {
 
     const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
     const [formData, setFormData] = useState({
         password: '',
         email: ''
     });
+
+    const setAlertMessage = (message) => {
+        setErrorMessage(message);
+        setTimeout(() => {
+                setErrorMessage('')
+            }
+            , 3000)
+    }
 
     const handleChange = (event) => {
         const targetName = event.target.name;
@@ -42,7 +51,7 @@ export function LoginModal() {
                 }
             )
             .catch(e => {
-                console.log(e)
+                setAlertMessage(e.response.data.message ?? 'An error occurred')
             }).finally(() => {
             setLoading(false);
         })
@@ -60,7 +69,7 @@ export function LoginModal() {
                 <img src={'src/assets/images/auth-header.jpg'} className={'object-cover h-14 md:h-20 w-full rounded-lg mb-4 rounded-tr-3xl'} alt={'Cover'}/>
 
                 <div className={'text-left'}>
-                    <h3 className={'text-2xl font-semibold mb-4'}>Login to Tiketi Hub</h3>
+                    <h3 className={'text-2xl font-semibold mb-4'}>Login to KCA Event Hub</h3>
                     <p>Enter your email and password to proceed</p>
 
                     <div className={'my-4'}>
@@ -76,6 +85,19 @@ export function LoginModal() {
                         <input name={'password'} type="password" placeholder="Enter your password"
                                className="input input-bordered w-full"
                                value={formData.password} onChange={handleChange}/>
+
+                        {
+                            errorMessage && (
+                                <div role="alert" className="alert alert-warning mt-4 text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6"
+                                         fill="none" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                    </svg>
+                                    <span>Warning: {errorMessage}</span>
+                                </div>
+                            )
+                        }
 
                         <button className="btn btn-primary mt-4 w-full text-white" disabled={loading}
                                 onClick={() => loginUser()}>
