@@ -2,8 +2,8 @@ import Ticket from "./Ticket.jsx";
 import {useEffect} from "react";
 
 export default function TicketGroup({tickets}) {
-    useEffect(() => {
 
+    useEffect(() => {
     }, [tickets]);
     return (
         <>
@@ -17,14 +17,15 @@ export default function TicketGroup({tickets}) {
                     </div>
                     <div className="p-6 w-full grid grid-cols-1  gap-4">
                         {
-                            tickets?.length ? (
-                                tickets?.map((ticket, index) => <Ticket key={index}/>)
+                            tickets ? (
+                                tickets?.map((ticket, index) => (
+                                    <Ticket key={index} ticketData={ticket}/>
+                                ))
                             ) : (
                                 <div className={'bg-orange-100 rounded-2xl p-10'}>
                                     <p>Your Event tickets will be shown here</p>
                                 </div>
                             )
-
                         }
                     </div>
                 </div>

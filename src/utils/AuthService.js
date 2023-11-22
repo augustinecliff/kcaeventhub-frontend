@@ -6,8 +6,6 @@ export const loggedInUser = () => {
     if (keys){
         decoded = jwtDecode(keys);
     }
-
-    console.log(decoded)
     return decoded;
 }
 

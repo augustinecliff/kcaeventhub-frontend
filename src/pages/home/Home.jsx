@@ -18,8 +18,8 @@ export default function Home() {
             try {
                 const response = await axios.get(url,{params: params});
                 if (response.status === 200) {
-                    console.log(response.data.data.events.sort());
-                    setEvents(response.data.data.events);
+                    // console.log(response.data.data.events.sort());
+                    setEvents(response.data.data.events.sort());
                 } else {
                     console.error('Request failed with status:', response.status);
                 }
@@ -64,10 +64,10 @@ function Header() {
         <div className="border relative flex flex-col overflow-hidden border-none rounded-2xl h-[600px]  md:h-96 mb-8">
             <img src={'src/assets/images/home.jpg'} className={'object-cover absolute w-full h-full '}/>
             <div
-                className={'absolute w-full min-h-full flex flex-col justify-center gap-4 p-8 text-white bg-black/30 text-center'}>
+                className={'absolute w-full min-h-full flex flex-col justify-center items-center gap-4 p-8 text-white bg-black/30 text-center'}>
                 <div className="flex justify-center text-2xl md:text-5xl font-bold">Search for events</div>
                 <div className="flex justify-center text-2xl">Explore top-rated attractions, activities and more!</div>
-                <div className="flex justify-center flex-wrap lg:flex-nowrap text-base gap-1 text-gray-800">
+                <div className="flex justify-center flex-wrap md:w-8/12  lg:flex-nowrap text-base gap-1 text-gray-800">
                     <div className="w-full">
                         <input type="search" placeholder="What are you looking for ?"
                                className="input input-bordered w-full"/>
