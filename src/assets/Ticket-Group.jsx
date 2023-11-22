@@ -1,10 +1,11 @@
 import Ticket from "./Ticket.jsx";
 import {useEffect, useState} from "react";
+import axiosApiInstance from "../utils/AxiosApiInstance.js";
 
 export default function TicketGroup( {tickets} ) {
     useEffect(() => {
 
-    },[tickets]);
+    },[tickets,axiosApiInstance]);
 
     return(
         <>
