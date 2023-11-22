@@ -19,7 +19,7 @@ function App() {
                     <Navigation/>
                     <Routes>
                         <Route index={true} path="/" element={<Home/>}></Route>
-                        <Route path="/event_search" element={<EventSearch/>}></Route>
+                        <Route path="/event_search" element={<Home/>}></Route> {/*EventSearch*/}
                         <Route path="/event_details" element={<EventDetails/>}></Route>
                         <Route path="/event_host" element={<EventHostPage/>}></Route>
                         <Route path="/create_event" element={<CreateEvent/>}></Route>

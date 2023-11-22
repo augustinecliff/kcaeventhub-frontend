@@ -2,14 +2,37 @@ import EventGroup from "../../assets/Event-Group.jsx";
 import {useEffect, useState} from "react";
 import {baseUrl} from "../../App.jsx";
 import axiosApiInstance from "../../utils/AxiosApiInstance.js";
+import axios from "axios";
 
 export default function Home() {
+    const [events, setEvents] = useState([]);
+    const url = baseUrl + '/api/event/browse';
 
+    useEffect(() => {
+        const browseEvents = async () => {
+            const params = {
+                size: 1000,
+                page: 0,
+            };
+
+            try {
+                const response = await axios.get(url,{params: params});
+                if (response.status === 200) {
+                    console.log(response.data.data.events.sort());
+                    setEvents(response.data.data.events);
+                } else {
+                    console.error('Request failed with status:', response.status);
+                }
+            } catch (error) {
+                console.error('Error:', error.message);
+            }
+        }
+        browseEvents().finally();
+    }, [url]);
     return (
         <>
             <Header/>
-            <EventGroup/>
-            <EventGroup/>
+            <EventGroup events={events}/>
         </>
     );
 }

@@ -1,11 +1,10 @@
 import Ticket from "./Ticket.jsx";
+import {useEffect, useState} from "react";
 
-export default function TicketGroup() {
-    const tickets = [];
-    for (let i = 0;i < 3;i ++) {
-        tickets.push(i);
-    }
+export default function TicketGroup( {tickets} ) {
+    useEffect(() => {
 
+    },[tickets]);
     return(
         <>
             <div className="flex justify-center w-full mb-6">
