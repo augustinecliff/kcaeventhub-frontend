@@ -74,7 +74,7 @@ export function CreateEvent() {
 
     return (
         <>
-            <section className={'flex justify-center p-8'}>
+            <section className={'flex justify-center p-8 px-2'}>
 
                 <div className={'w-full md:w-[600px]'}>
                     <h3 className={'text-2xl font-semibold mb-4'}>Create an event</h3>
