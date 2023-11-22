@@ -24,17 +24,29 @@ export default function EventDetails({route}) {
             .finally()
     };
 
+    const enroll = () => {
+        axiosApiInstance.patch(`/api/event/user/enroll/${eventId}`)
+            .then(res => {
+                document.getElementById('success_modal').showModal();
+            })
+            .catch(
+                e => {
+                    alert(e.response.data.message);
+                }
+            )
+            .finally()
+    }
+
 
     return (
         <>
             {
                 event ? (
                     <>
-                        <div className="flex flex-col justify-end  w-full rounded-2xl px-6 sm:px-6 bg-cover
-            bg-[url('https://img.freepik.com/free-vector/abstract-lines-ovals-pattern-background_78370-2677.jpg?w=2000&t=st=1700639252~exp=1700639852~hmac=91a41d741a24e68fb10dedc2a10fc3676fd65d4a36c8cc8a1aef81c4d227e02c')]">
+                        <div className="flex flex-col justify-center items-center  w-full rounded-2xl px-6 sm:px-6 min-h-[400px] bg-cover bg-[url('/src/assets/images/board.png')]">
                             <div
-                                className="bg-gray-100/90 flex flex-col flex-wrap justify-between items-center mt-32 mb-6 rounded-2xl p-2 sm:p-4 sm:py-10 gap-2">
-                                <div className="font-bold text-lg sm:text-2xl capitalize">{event.title}</div>
+                                className="backdrop-blur-xs flex flex-col flex-wrap justify-between items-center gap-10 rounded-2xl p-2 sm:p-4 sm:py-10 ">
+                                <p className="font-bold text-4xl text-white text-center sm:text-5xl uppercase">{event.title}</p>
                                 <div className="flex flex-row gap-2 flex-wrap justify-center">
                                     <div
                                         className="flex justify-center items-center flex-row bg-gray-300 rounded-3xl w-fit text-base px-4 py-2 gap-2">
@@ -47,7 +59,7 @@ export default function EventDetails({route}) {
                                         </svg>
                                         <div>{event.startDate}</div>
                                     </div>
-                                    <button className={'btn btn-primary text-white rounded-full'}>Book your Ticket
+                                    <button className={'btn btn-primary text-white rounded-full'} onClick={() => enroll()}>Enroll Now
                                     </button>
                                 </div>
                                 {/*<SocialMedia />*/}

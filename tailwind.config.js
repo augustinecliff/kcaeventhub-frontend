@@ -24,6 +24,15 @@ module.exports = {
     plugins: [
         require('daisyui')
     ],
+
+    theme: {
+        extend: {
+            fontFamily: {
+                frederika: ['Fredericka the Great'],
+            }
+        },
+    },
+
     daisyui: {
         themes: [
             {

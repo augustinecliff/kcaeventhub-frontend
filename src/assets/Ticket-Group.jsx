@@ -17,14 +17,20 @@ export default function TicketGroup({tickets}) {
                     </div>
                     <div className="p-6 w-full grid grid-cols-1  gap-4">
                         {
-                            tickets ? (
+                            tickets.length > 0 ? (
                                 tickets?.map((ticket, index) => (
                                     <Ticket key={index} ticketData={ticket}/>
                                 ))
                             ) : (
-                                <div className={'bg-orange-100 rounded-2xl p-10'}>
-                                    <p>Your Event tickets will be shown here</p>
-                                </div>
+
+                                (!tickets.length) ? (
+                                    <div className={'bg-orange-100 rounded-2xl p-10'}>
+                                        <p>Your Event tickets will be shown here</p>
+                                    </div>
+                                ) : (
+                                    <div className="skeleton w-full h-32"></div>
+                                )
+
                             )
                         }
                     </div>
