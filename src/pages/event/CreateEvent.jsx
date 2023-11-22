@@ -14,7 +14,7 @@ export function CreateEvent() {
         pricing: 0,
         venue: '',
         capacity: '',
-        ageRestriction: '',
+        ageRestriction: '18',
         description: '',
         category: selectedCategory,
     });

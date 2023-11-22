@@ -55,9 +55,9 @@ export default function Ticket({ticketData}) {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex flex-wrap justify-end justify-items-center items-center p-4 gap-2.5 flex-grow">
-                            <button className={'btn btn-primary text-white'}>Un-Enroll</button>
-                        </div>
+                        {/*<div className="flex flex-wrap justify-end justify-items-center items-center p-4 gap-2.5 flex-grow">*/}
+                        {/*    <button className={'btn btn-primary text-white'}>Un-Enroll</button>*/}
+                        {/*</div>*/}
                     </div>
                 )
             }
