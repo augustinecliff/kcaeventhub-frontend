@@ -38,6 +38,7 @@ export function LoginModal() {
                     })
                     localStorage.setItem('@AUTH_LOCAL_STORE_KEY', res.data.data.token);
                     document.getElementById('login_modal').close();
+                    window.location.reload();
                 }
             )
             .catch(e => {

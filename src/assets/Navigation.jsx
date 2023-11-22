@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {LoginModal} from "../authentication/modal/Login.jsx";
 import {CreateAccountModal} from "../authentication/modal/CreateAccount.jsx";
+import {loggedInUser, logoutUser} from "../utils/AuthService.js";
 
 export function Navigation() {
     const [showDiv, setShowDiv] = useState(true);
@@ -24,6 +25,10 @@ export function Navigation() {
         };
     }, []);
 
+    useEffect(() => {
+        loggedInUser();
+    }, []);
+
     return (
         <div className="flex flex-row justify-between mb-6 text-center">
             <div className="flex flex-row gap-1 justify-center items-center">
@@ -38,22 +43,39 @@ export function Navigation() {
                 <Link to="/" className="flex items-center gap-1 text-2xl hover:text-orange-700">
                     <span className="font-semibold">Event</span>
                     <span>hub</span>
-                    <span className={'badge badge-secondary font-bold ml-4 hidden md:block'}>KCA</span>
+                    <span className={'badge bg-orange-300 font-bold ml-4 hidden md:block'}>KCA</span>
                 </Link>
             </div>
             <div className={'flex-grow'}>
                 {
                     showDiv &&
-                    <nav className="flex flex-row flex-wrap justify-center items-center text-base gap-x-6">
+                    <nav className="flex flex-row flex-wrap justify-end items-center md: text-base gap-x-6">
                         <div><Link to="/event_search" className="">Events</Link></div>
                         <div><Link to="/my_tickets" className="">My tickets</Link></div>
                         <Link to={"/create_event"}>
                             <button className={'btn btn-primary text-white'}>Create Event</button>
                         </Link>
 
-                        <button className={'btn'}
-                                onClick={() => document.getElementById('login_modal').showModal()}>Login
-                        </button>
+                        {
+                            loggedInUser()?.email ? (
+                                <div className={'group relative'}>
+                                    <div
+                                        className={'w-12 h-12 rounded-full bg-orange-200 uppercase text-2xl flex justify-center items-center font-light'}>
+                                        {loggedInUser().email.slice(0, 1)}
+                                    </div>
+                                    <ul className="text-left menu bg-base-200 rounded-box w-44 absolute right-0 hidden group-hover:block z-10">
+                                        <li><a>Welcome {loggedInUser().firstName}</a></li>
+                                        <li onClick={() => logoutUser()}><a>Logout</a></li>
+                                    </ul>
+                                </div>
+                            ) : (
+                                <button className={'btn'}
+                                        onClick={() => document.getElementById('login_modal').showModal()}>Login
+                                </button>
+                            )
+                        }
+
+
                     </nav>
                     ||
                     !showDiv &&
@@ -77,9 +99,9 @@ export function Navigation() {
                                 <label htmlFor="my-drawer" aria-label="close sidebar"
                                        className="drawer-overlay"></label>
                                 <ul className="menu p-4 w-72 min-h-full bg-base-200 text-base-content">
-                                    {/* Sidebar content here */}
-                                    <li><a>Sidebar Item 1</a></li>
-                                    <li><a>Sidebar Item 2</a></li>
+                                    <li><Link to={'/'}>Events</Link></li>
+                                    <li><Link to={'/my_tickets'}>My Tickets</Link></li>
+                                    <li><Link to={'/create_event'}>Create Event</Link></li>
                                 </ul>
                             </div>
                         </div>
