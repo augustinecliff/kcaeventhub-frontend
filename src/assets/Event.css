@@ -15,7 +15,7 @@
     line-height: normal;
 }
 .kca-logo {
-    background-image: url("/src/assets/images/kcauLogo.jpeg");
+    background-image: url("src/assets/images/kcauLogo.jpeg");
     background-size: cover;
 }
 .event-photo {
@@ -29,7 +29,7 @@
 
     border-radius: 16px;
     #background: #E0E0E0;
-    background-image: url("/src/assets/images/party-event.jpeg");
+    background-image: url("src/assets/images/Frame.jpg");
     background-size: contain;
 }
 .event-organiser {

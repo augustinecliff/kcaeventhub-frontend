@@ -12,7 +12,7 @@ export default function TicketGroup({tickets}) {
                     <div className="flex items-center gap-2.5 px-6">
                         <div className="text-2xl font-bold">My active tickets</div>
                         <div className="bg-gray-300 rounded-full flex justify-center h-7 w-7 items-center">
-                            <div className="text-base font-semibold">2</div>
+                            <div className="text-base font-semibold">{tickets.length}</div>
                         </div>
                     </div>
                     <div className="p-6 w-full grid grid-cols-1  gap-4">
