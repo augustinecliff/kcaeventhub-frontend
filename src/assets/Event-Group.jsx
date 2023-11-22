@@ -2,11 +2,11 @@ import Event from "./Event.jsx";
 import {useEffect} from "react";
 import {Link} from "react-router-dom";
 
-export default function EventGroup( {events} ) {
+export default function EventGroup({events}) {
 
     useEffect(() => {
         console.log(events);
-    },[events]);
+    }, [events]);
     return (
         <>
             <div className="flex justify-center w-full mb-6">
@@ -17,8 +17,10 @@ export default function EventGroup( {events} ) {
                     </div>
                     <div className="p-6 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
-                        {events.map(
-                            event => <Link to={`/event_details/${event.eventId}`}><Event key={event.eventId}  event={event}/></Link>
+                        {events?.map(
+                            event => <Link key={event.eventId} to={`/event_details/${event.eventId}`}>
+                                <Event event={event}/>
+                            </Link>
                         )}
                     </div>
                 </div>

@@ -15,12 +15,12 @@ function App() {
     return (
         <>
             <div className="w-screen flex justify-center mb-6 px-2">
-                <div className="border border-none w-full md:w-8/12  rounded-2xl pt-2.5">
+                <div className="border border-none w-full md:w-11/12 2xl:w-8/12  rounded-2xl pt-2.5">
                     <Navigation/>
                     <Routes>
                         <Route index={true} path="/" element={<Home/>}></Route>
                         <Route path="/event_search" element={<Home/>}></Route> {/*EventSearch*/}
-                        <Route path="/event_details" element={<EventDetails/>}></Route>
+                        <Route path="/event_details/:eventId" element={<EventDetails/>}></Route>
                         <Route path="/event_host" element={<EventHostPage/>}></Route>
                         <Route path="/create_event" element={<CreateEvent/>}></Route>
                         <Route path="/my_tickets" element={<MyTickets/>}></Route>

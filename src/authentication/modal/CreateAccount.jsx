@@ -16,6 +16,7 @@ export function CreateAccountModal({showOTP, showDefault, showPassword}) {
     const [registerFrom, setRegisterForm] = useState({
         firstName: '',
         lastName: '',
+        phoneNumber: '',
         email: ''
     });
     const [otp, setOTP] = useState('');
@@ -37,23 +38,7 @@ export function CreateAccountModal({showOTP, showDefault, showPassword}) {
 
     const handleChange = (event) => {
         const targetName = event.target.name;
-        switch (targetName) {
-            case 'email':
-                setRegisterForm({...registerFrom, [targetName]: event.target.value})
-                return;
-
-            case 'firstName':
-                setRegisterForm({...registerFrom, [targetName]: event.target.value})
-                return;
-
-            case 'lastName':
-                setRegisterForm({...registerFrom, [targetName]: event.target.value})
-                return;
-
-            default:
-                return;
-        }
-        // this.setState({value: event.target.value});
+        setRegisterForm({...registerFrom, [targetName]: event.target.value})
     }
 
     const verifyOTP = () => {
@@ -98,6 +83,7 @@ export function CreateAccountModal({showOTP, showDefault, showPassword}) {
                     })
                     localStorage.setItem('@AUTH_LOCAL_STORE_KEY', res.data.data.token);
                     document.getElementById('register_modal').close();
+                    window.location.reload();
                 }
             )
             .catch(e => {
@@ -156,7 +142,7 @@ export function CreateAccountModal({showOTP, showDefault, showPassword}) {
     return (
         <>
             <div className="modal-box">
-                    <img src={'src/assets/images/auth-header.jpg'} className={'object-cover h-14 md:h-20 w-full rounded-lg mb-4 rounded-tr-3xl'} alt={'Cover'}/>
+                    <img src={'./src/assets/images/auth-header.jpg'} className={'object-cover h-14 md:h-20 w-full rounded-lg mb-4 rounded-tr-3xl'} alt={'Cover'}/>
                 {
                     toggleModals.default && (
                         <>
@@ -181,12 +167,20 @@ export function CreateAccountModal({showOTP, showDefault, showPassword}) {
                                     <input name={'lastName'} type="text" placeholder="Enter your last name"
                                            className="input input-bordered w-full"
                                            value={registerFrom.lastName} onChange={handleChange}/>
+
                                     <label className="label">
                                         <span className="label-text font-semibold">Email</span>
                                     </label>
                                     <input name={'email'} type="text" placeholder="Enter your email"
                                            className="input input-bordered w-full"
                                            value={registerFrom.email} onChange={handleChange}/>
+
+                                    <label className="label">
+                                        <span className="label-text font-semibold">Phone</span>
+                                    </label>
+                                    <input name={'phoneNumber'} type="text" placeholder="Enter your phone number"
+                                           className="input input-bordered w-full"
+                                           value={registerFrom.phoneNumber} onChange={handleChange}/>
 
                                     <button className="btn btn-primary mt-4 w-full text-white" disabled={loading}
                                             onClick={() => createAccount()}>
