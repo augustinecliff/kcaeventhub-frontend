@@ -1,39 +1,100 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import axiosApiInstance from "../../utils/AxiosApiInstance.js";
 
 export function CreateEvent() {
     const [loading, setLoading] = useState(false)
+    const [eventCategories, setEventCategories] = useState([])
+    const [selectedCategory, setSelectedCategory] = useState()
+    const [success, setSuccess] = useState('')
     const [formData, setFormData] = useState({
         title: '',
         startDate: '',
         endDate: '',
         duration: '',
-        pricing: '',
+        pricing: 0,
         venue: '',
         capacity: '',
-        ageRestriction: '',
+        ageRestriction: '18',
         description: '',
-        category: '',
+        category: selectedCategory,
     });
+
+    const clearFromData = () => {
+        setFormData(
+            {
+                title: '',
+                startDate: '',
+                endDate: '',
+                duration: '',
+                pricing: 0,
+                venue: '',
+                capacity: '',
+                ageRestriction: '',
+                description: '',
+                category: selectedCategory,
+            }
+        )
+    }
+
+    useEffect(() => {
+        fetchCategories();
+    }, []);
 
     const handleChange = (event) => {
         const targetName = event.target.name;
-        console.log(targetName)
         setFormData({...formData, [targetName]: event.target.value})
     }
 
-    const createEvent = () => {
+    const fetchCategories = () => {
+        axiosApiInstance.get('/api/event/categories')
+            .then(res => {
+                setEventCategories(res.data.data);
+            })
+            .catch()
+            .finally()
+    };
 
+    const createEvent = () => {
+        console.log(formData)
+        setLoading(true);
+        setSuccess('')
+        axiosApiInstance.post('/api/event/create', {...formData, category: selectedCategory})
+            .then(
+                res => {
+                    console.log(res)
+                    clearFromData();
+                }
+            )
+            .catch(e => {
+                console.log(e)
+            }).finally(() => {
+            setLoading(false);
+        })
     }
 
     return (
         <>
-            <section className={'flex justify-center p-8'}>
+            <section className={'flex justify-center p-8 px-2'}>
 
                 <div className={'w-full md:w-[600px]'}>
                     <h3 className={'text-2xl font-semibold mb-4'}>Create an event</h3>
                     <p>Enter your event details below</p>
 
                     <div className={'my-4'}>
+                        <label className="label">
+                            <span className="label-text font-semibold">Event Category</span>
+                        </label>
+                        <select className="select select-bordered w-full"
+                                onChange={(e) => {
+                                    setSelectedCategory(eventCategories[e.target.value]);
+                                }}
+                        >
+                            {eventCategories.map((category, index) => (
+                                <option key={index} value={index}>{category.name}</option>
+                            ))}
+                            <option value={""}>All categories</option>
+                        </select>
+
                         <label className="label">
                             <span className="label-text font-semibold">Event title</span>
                         </label>
