@@ -24,7 +24,7 @@ export default function Ticket({ticketData}) {
                                     {/*Aug 16 2023*/}
                                 </div>
                                 <div className="gap-0.5">
-                                    <div className="text-sm font-normal">Location</div>
+                                    <div className="text-sm font-normal">Venue</div>
                                     <div className="text-base font-medium">{ticketData.venue}</div>
                                     {/*Naivasha, Kenya*/}
                                 </div>
@@ -34,9 +34,9 @@ export default function Ticket({ticketData}) {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex flex-wrap justify-end justify-items-center items-center p-4 gap-2.5 flex-grow">
+                        {/*<div className="flex flex-wrap justify-end justify-items-center items-center p-4 gap-2.5 flex-grow">
                             <button className={'btn btn-primary text-white'}>Un-Enroll</button>
-                        </div>
+                        </div>*/}
                     </div>
                 )
             }
