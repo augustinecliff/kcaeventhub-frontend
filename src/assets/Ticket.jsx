@@ -30,7 +30,7 @@ export default function Ticket( {ticketData} ) {
                 </div>
             </div>
             <div className="flex flex-wrap justify-center justify-items-center items-center p-4 gap-2.5">
-                <button className={'btn btn-primary text-white'}>Un-Enroll</button>
+                <button className={'btn btn-primary text-white'}>UnEnroll</button>
             </div>
         </div>
     );
