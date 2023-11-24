@@ -13,7 +13,7 @@ export default function Event( {event} ) {
                 </div>
                 <p className="py-2 capitalize min-h-[50px] line-clamp-2">{event.title}</p> {/*Amapiano tour Sep 2023*/}
                 <div className="flex gap-2 text-sm font-medium p-0.2 w-full">
-                    <div className="w-10 h-10 border border-black rounded-full kca-logo"></div>
+                    <div className="bg-[url('/src/assets/images/kcauLogo.jpeg')] bg-no-repeat bg-contain w-10 h-10 border border-black rounded-full"></div>
                     <p className="capitalize">{event.venue} <br/>
                         <span className="text-xs text-gray-500 w-full">{event.startDate}</span>
                     </p>

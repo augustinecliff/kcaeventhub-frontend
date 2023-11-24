@@ -7,6 +7,8 @@ import EventSearch from "./pages/eventSearch/EventSearch.jsx";
 import {Footer} from "./assets/Footer.jsx";
 import MyTickets from "./pages/ticket/MyTickets.jsx";
 import {CreateEvent} from "./pages/event/CreateEvent.jsx";
+import MyEvents from "./pages/event/MyEvents.jsx";
+import MyEventAttendees from "./pages/event/MyEventAttendees.jsx";
 
 export const baseUrl = "http://192.168.1.104:8080";
 
@@ -24,6 +26,8 @@ function App() {
                         <Route path="/event_host" element={<EventHostPage/>}></Route>
                         <Route path="/create_event" element={<CreateEvent/>}></Route>
                         <Route path="/my_tickets" element={<MyTickets/>}></Route>
+                        <Route path="/my_events" element={<MyEvents/>}></Route>
+                        <Route path="/event_attendees/:eventId" element={<MyEventAttendees/>}></Route>
                         <Route path="*"
                                element={<p style={{color: "red"}}>Error handling Page <b>pending ... </b></p>}></Route>
                     </Routes>

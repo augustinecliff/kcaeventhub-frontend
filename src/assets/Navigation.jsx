@@ -51,8 +51,9 @@ export function Navigation() {
                 {
                     showDiv &&
                     <nav className="flex flex-row flex-wrap justify-end items-center md: text-base gap-x-6">
-                        <div><Link to="/event_search" className="">Events</Link></div>
-                        <div><Link to="/my_tickets" className="">My tickets</Link></div>
+                        <Link to="/event_search" className="">Events</Link>
+                        <Link to="/my_tickets" className="">My Tickets</Link>
+                        <Link to="/my_events" className="">My Events</Link>
                         <Link to={"/create_event"}>
                             <button className={'btn btn-primary text-white'}>Create Event</button>
                         </Link>
@@ -150,6 +151,7 @@ export function Navigation() {
 
                                     <li><Link to={'/'}>Events</Link></li>
                                     <li><Link to={'/my_tickets'}>My Tickets</Link></li>
+                                    <li><Link to={'/my_events'}>My Events</Link></li>
                                     <li><Link to={'/create_event'}>Create Event</Link></li>
                                 </ul>
                             </div>

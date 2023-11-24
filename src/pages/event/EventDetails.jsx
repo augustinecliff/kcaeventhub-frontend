@@ -2,6 +2,7 @@ import EventGroup from "../../assets/Event-Group.jsx";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axiosApiInstance from "../../utils/AxiosApiInstance.js";
+import "/src/assets/Event.css";
 
 export default function EventDetails({route}) {
 
@@ -72,7 +73,7 @@ export default function EventDetails({route}) {
                         </div>
 
                         <div className="bg-gray-100 flex w-full mb-6 rounded-2xl p-2 sm:p-4 gap-6">
-                            <div className="h-14 w-14 sm:h-20 sm:w-20 bg-white rounded-full kca-logo">
+                            <div className="bg-[url('/src/assets/images/kcauLogo.jpeg')] bg-no-repeat bg-contain h-14 w-14 sm:h-20 sm:w-20 rounded-full ">
                             </div>
                             <div className="flex flex-col sm:gap-1 justify-center">
                                 <div className="flex font-bold">{event?.organizer?.firstName +' ' + event?.organizer?.lastName}</div>
